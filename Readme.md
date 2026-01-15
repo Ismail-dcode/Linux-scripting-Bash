@@ -19,14 +19,14 @@ The goal of this repo is to learn scripting **step by step**, starting from basi
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/your-username/bash-scripting.git
+git clone https://github.com/Ismail-dcode/Linux-scripting-Bash.git
 
 
 Give execute permission:
 
-chmod +x script-name.sh
+chmod +x input.sh
 
 
 Run the script:
 
-./script-name.sh 
+./input.sh 
