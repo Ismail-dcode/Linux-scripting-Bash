@@ -4,4 +4,4 @@
 
 echo "Scripting Day-1 "
 
-echo "learning : cloud tech "
+echo "learning : Scriptinng "
