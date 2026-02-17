@@ -11,7 +11,7 @@ The goal of this repo is to learn scripting **step by step**, starting from basi
 - Practice scripts useful for **Linux system administration**
 - Prepare for **RHCSA (EX200)** and DevOps roles
 - Build a **public learning log** and showcase consistency
-- Convert theory into **hands-on automation**
+- Convert theory into **hands-on automations**
 
 ---
 
@@ -25,7 +25,6 @@ git clone https://github.com/Ismail-dcode/Linux-scripting-Bash.git
 Give execute permission:
 
 chmod +x input.sh
-
 
 Run the script:
 
