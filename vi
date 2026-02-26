@@ -1,0 +1,115 @@
+# ==============================
+# Import Required Libraries
+# ==============================
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+from scipy import stats
+
+# ==============================
+# Create Sample Dataset
+# ==============================
+np.random.seed(1)
+
+data = {
+    "Age": np.random.randint(20, 60, 150),
+    "Income": np.random.randint(25000, 100000, 150),
+    "Experience": np.random.randint(1, 25, 150),
+    "Department": np.random.choice(["HR", "IT", "Finance", "Marketing"], 150),
+    "Gender": np.random.choice(["Male", "Female"], 150)
+}
+
+df = pd.DataFrame(data)
+
+print("First 5 Rows of Dataset:\n")
+print(df.head())
+
+# ==============================
+# Central Tendency Measures
+# ==============================
+print("\n--- Central Tendency Measures ---")
+
+numerical_cols = ["Age", "Income", "Experience"]
+
+for col in numerical_cols:
+    print(f"\nColumn: {col}")
+    print("Mean:", df[col].mean())
+    print("Median:", df[col].median())
+    print("Mode:", df[col].mode()[0])
+
+# ==============================
+# Measures of Dispersion
+# ==============================
+print("\n--- Measures of Dispersion ---")
+
+for col in numerical_cols:
+    print(f"\nColumn: {col}")
+    print("Variance:", df[col].var())
+    print("Standard Deviation:", df[col].std())
+
+# ==============================
+# Correlation Matrix
+# ==============================
+print("\n--- Correlation Matrix ---")
+correlation = df[numerical_cols].corr()
+print(correlation)
+
+# ==============================
+# Heatmap
+# ==============================
+plt.figure(figsize=(6,5))
+sns.heatmap(correlation, annot=True, cmap="coolwarm")
+plt.title("Correlation Heatmap")
+plt.show()
+
+# ==============================
+# Distribution Plots (KDE)
+# ==============================
+for col in numerical_cols:
+    plt.figure(figsize=(6,4))
+    sns.kdeplot(df[col], fill=True)
+    plt.title(f"Distribution Plot of {col}")
+    plt.show()
+
+# ==============================
+# Histogram Plots
+# ==============================
+for col in numerical_cols:
+    plt.figure(figsize=(6,4))
+    plt.hist(df[col], bins=10, color='skyblue', edgecolor='black')
+    plt.title(f"Histogram of {col}")
+    plt.xlabel(col)
+    plt.ylabel("Frequency")
+    plt.show()
+
+# ==============================
+# Bar Plots (Categorical Data)
+# ==============================
+plt.figure(figsize=(6,4))
+sns.countplot(x="Department", data=df)
+plt.title("Department Distribution")
+plt.show()
+
+plt.figure(figsize=(6,4))
+sns.countplot(x="Gender", data=df)
+plt.title("Gender Distribution")
+plt.show()
+
+# ==============================
+# Chi-Square Test
+# ==============================
+print("\n--- Chi-Square Test: Department vs Gender ---")
+
+contingency_table = pd.crosstab(df["Department"], df["Gender"])
+chi2, p, dof, expected = stats.chi2_contingency(contingency_table)
+
+print("Chi-Square Statistic:", chi2)
+print("p-value:", p)
+print("Degrees of Freedom:", dof)
+print("Expected Frequencies:\n", expected)
+
+if p < 0.05:
+    print("Conclusion: Significant relationship between Department and Gender")
+else:
+    print("Conclusion: No significant relationship between Department and Gender")
