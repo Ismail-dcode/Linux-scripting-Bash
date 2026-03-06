@@ -10,7 +10,8 @@ myArray+=(1000 umask "wow")
 
 
 echo "${myArray[*]:1:5}"
-
+unset myArray[0]
+echo "${myArray[*]}"
 
 
 
