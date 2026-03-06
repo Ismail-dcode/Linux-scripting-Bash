@@ -8,6 +8,7 @@ echo "${myArray[1]}"
 myArray[1]=1000.67
 myArray+=(1000 umask "wow")
 
+
 echo "${myArray[*]:1:5}"
 
 
