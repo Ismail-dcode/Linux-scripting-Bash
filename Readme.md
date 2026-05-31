@@ -28,4 +28,4 @@ chmod +x input.sh
 
 Run the script:
 
-./input.sh 
+./input.sh or /bin/bash/input.sh
