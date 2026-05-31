@@ -7,3 +7,5 @@ git add .
 git commit -m "$Cmsg"
 
 git push 
+
+clear
